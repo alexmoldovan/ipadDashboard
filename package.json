@@ -1,0 +1,28 @@
+{
+  "name": "ipaddash",
+  "version": "1.0.0",
+  "description": "no desc",
+  "main": "index.js",
+  "scripts": {
+    "test": "npmtester"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexmoldovan/ipadDashboard.git"
+  },
+  "keywords": [
+    "dash"
+  ],
+  "author": "alex moldovan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexmoldovan/ipadDashboard/issues"
+  },
+  "homepage": "https://github.com/alexmoldovan/ipadDashboard#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.2"
+  }
+}
