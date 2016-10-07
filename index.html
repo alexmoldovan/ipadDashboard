@@ -19,7 +19,7 @@
 
         <!--        weather-->
         <script type="text/javascript" src="js/simpleweather.min.js"></script>
-        
+
         <!--        news-->
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
@@ -31,22 +31,27 @@
     <body>
 
         <div class="container-fluid">
+            <div id="particles-js"></div> 
+            
             <div class="row">
-
                 <div class="col-md-6">
-                    <div class="mainpageclock"></div>
+                    <div class="inner-col-clock">
+                        <div class="mainpageclock"></div>
+                    </div>
                 </div>
 
                 <div class="col-md-6">
-                    <div id="weather"></div>                  
+                        <div id="weather"></div> 
                 </div>
-                
+
                 <div class="col-md-12">
                     <div id="feed"></div>              
                 </div>
-
             </div>
         </div>
+
+        <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
+        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
 
     </body>
 </html>
