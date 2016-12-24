@@ -121,10 +121,13 @@ i {
 
 #weather li {
     background: black;
-    background: grey;
+    background: white;
     padding: 20px;
     display: inline-block;
     border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
 }
 
 #weather .currently {
@@ -140,10 +143,35 @@ i {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: dimgrey;
+  background-color: white;
   background-image: url("");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
 }
 
+#rssdata ul{
+    list-style-type: none;
+}
+
+#rssdata ul li {
+    margin: 5px;
+    padding-top: 5px;
+}
+
+#rssdata .rss-items a{
+    color: black; 
+}
+
+.modal-dialog {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content {
+  height: auto;
+  min-height: 100%;
+  border-radius: 0;
+}

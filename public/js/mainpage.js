@@ -10,12 +10,10 @@ $( document ).ready(function() {
 
     // WEATHER
 
-    $(document).ready(function() {  
-        getWeather(); //Get the initial weather.
-        setInterval(getWeather, 600000); //Update the weather every 10 minutes.
-    });
+    loadWeather(); //Get the initial weather.
+    setInterval(loadWeather, 600000); //Update the weather every 10 minutes.
 
-    function getWeather() {
+    function loadWeather() {
         $.simpleWeather({
             location: 'Bucharest, Romania',
             unit: 'c',
@@ -28,29 +26,17 @@ $( document ).ready(function() {
                 $("#weather").html(html);
             },
             error: function(error) {
-                $("#weather").html('<p>'+error+'</p>');
+                //                $("#weather").html('<p>'+error+'</p>');
+                $("#weather").html('<p>'+"NO WEATHER INFO CURRENTLY AVAILABLE " + '<button type="button" id="refreshWeather">Click Me!</button>'+'</p>');
             }
         });
     }
 
+    //    $( "#refreshWeather" ).click(function() {
+    //        getWeather();
+    //    });
     // NEWS
-    //    google.load("feeds", "1");
-    //
-    //    function initialize() {
-    //        var feed = new google.feeds.Feed("http://fastpshb.appspot.com/feed/1/fastpshb");
-    //        feed.load(function(result) {
-    //            if (!result.error) {
-    //                var container = document.getElementById("feed");
-    //                for (var i = 0; i < result.feed.entries.length; i++) {
-    //                    var entry = result.feed.entries[i];
-    //                    var div = document.createElement("div");
-    //                    div.appendChild(document.createTextNode(entry.title));
-    //                    container.appendChild(div);
-    //                }
-    //            }
-    //        });
-    //    }
-    //    google.setOnLoadCallback(initialize);
+
 
 
     //particles
@@ -104,7 +90,7 @@ $( document ).ready(function() {
             "line_linked": {
                 "enable": true,
                 "distance": 150,
-                "color": "#ffffff",
+                "color": "#000000",
                 "opacity": 0.4,
                 "width": 1
             },
@@ -164,23 +150,68 @@ $( document ).ready(function() {
         },
         "retina_detect": true
     });
+
+
+    // NEWS
+
+    loadNews();
+    setInterval(loadNews(), 600000); //Update the news every 10 minutes.
+
+    function loadNews() {
+        $.ajax({
+            url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss',
+            dataType: 'jsonp',
+            success: function (data) {
+
+                //                console.log(data.responseData.feed.entries);
+
+                $(data.responseData.feed.entries).each(function (index, entry) {
+                    var content = document.createElement("content");
+                    content.innerHTML = entry.content;                                   
+                    var images = $(content).find('img').map(function(){
+                        return $(this).attr('src')
+                    }).get();
+
+                    //                    console.log(images);
+
+                    var item_html = '<li>' + (images.length == 0 ? '' :'<img src="'+ images[0]) + '"/>' + '<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top" target="_blank" href="' + entry.link + '">' + entry.title + '</a>' + '</li>';
+
+                    //                    console.log(item_html);
+
+                    $('#rssdata ul.rss-items').append(item_html);
+                });
+                $('#rssdata div.loading').fadeOut();
+                $('#rssdata ul.rss-items').slideDown();
+            },
+            error: function () {}
+
+        });
+    };
+
+    // MIRROR
+    $( "#mirror" ).click(function() {
+        $('#mirror-modal').modal('toggle');
+    });
+
+    // video
+    // Grab elements, create settings, etc.
+//    var video = document.getElementById('video');
 //
-//    var count_particles, stats, update;
-//    stats = new Stats;
-//    stats.setMode(0);
-//    stats.domElement.style.position = 'absolute';
-//    stats.domElement.style.left = '0px';
-//    stats.domElement.style.top = '0px';
-//    document.body.appendChild(stats.domElement);
-//    count_particles = document.querySelector('.js-count-particles');
-//    update = function() {
-//        stats.begin();
-//        stats.end();
-//        if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-//            count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-//        }
-//        requestAnimationFrame(update);
-//    };
-//    requestAnimationFrame(update);;
+//    // Get access to the camera!
+//    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+//        // Not adding `{ audio: true }` since we only want video now
+//        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+//            video.src = window.URL.createObjectURL(stream);
+//            video.play();
+//        });
+//    }
+//
+//
+//    // Elements for taking the snapshot
+//    var canvas = document.getElementById('canvas');
+//    var context = canvas.getContext('2d');
+//    var video = document.getElementById('video');
+
+
 
 });

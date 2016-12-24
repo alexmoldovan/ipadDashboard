@@ -10,8 +10,8 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap-yeti.min.css" />
 
         <!--        js page res-->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
         <!--        flipclock-->
         <link rel="stylesheet" type="text/css" href="css/flipclock.css" />
@@ -19,9 +19,6 @@
 
         <!--        weather-->
         <script type="text/javascript" src="js/simpleweather.min.js"></script>
-
-        <!--        news-->
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
         <!--        mainpage css js-->
         <script type="text/javascript" src="js/mainpage.js"></script>
@@ -31,8 +28,50 @@
     <body>
 
         <div class="container-fluid">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+<!--                        <a class="navbar-brand" href="#">Brand</a>-->
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+<!--                            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#" class="btn btn-primary">Primary</a></li>
+<!--
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                </ul>
+                            </li>
+-->
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Link</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+        
             <div id="particles-js"></div> 
-            
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="inner-col-clock">
@@ -41,17 +80,48 @@
                 </div>
 
                 <div class="col-md-6">
-                        <div id="weather"></div> 
+                    <div id="weather"></div> 
                 </div>
 
                 <div class="col-md-12">
-                    <div id="feed"></div>              
+
+                    <div class="panel panel-default">
+<!--                        <div class="panel-heading" style="">News <button type="button" id="mirror">MIRROR</button></div>-->
+                        <div class="panel-heading" style="">News</div>
+                        <div class="panel-body">
+                            <div id="rssdata">
+                                <ul class="rss-items"></ul>
+                                <div class="loading">Loading RSS items...</div>
+                            </div> 
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal" id="mirror-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Mirror</h4>
+                    </div>
+                    <div class="modal-body">
+                        <video id="video" width="640" height="480" autoplay></video>
+                        <canvas id="canvas" width="640" height="480"></canvas>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
-        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+        <script type="text/javascript" src="js/particles.min.js"></script>
 
     </body>
 </html>
