@@ -5,7 +5,7 @@ web dashboard for my ipad to show the time, weather, news and more to come
 node, express and bootstrap ui
 
 Instructions:
-will follow
+run with "node index.js"
 
 components used:
 - flipclock - https://github.com/objectivehtml/FlipClock
