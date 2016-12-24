@@ -1,8 +1,8 @@
 # ipad Dashboard
 ==========
-web dashboard for my ipad to show the time, weather, news and more to come
+a simple web dashboard customized for ipads to show the time, weather and top news headlines
 ==========
-node, express and bootstrap ui
+built with node, express and bootstrap ui
 
 Instructions:
 run with "node index.js"
